@@ -3,12 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Form</title>
 </head>
 <body>
-    <h1>hello</h1>
+
+    <form onsubmit="formInput(event)" name="loginForm">
+        <input type="email" id="emailAddress" name="emailAddress" placeholder="emailAddress"><br>
+        <input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
+        <input type="submit">
+    </form>
+
     <script>
 
+function formInput(e){
+    e.preventDefault()
+
+
+const loginForm= document.forms['loginForm']
+
+let data = new FormData(loginForm)
+
+const email = data.get('emailAddress')
+const password = data.get('userPassword')
+
+
+const loginDetails = {
+         
+          email,
+          password,
+
+        };
+
+        localStorage.setItem("UserData", JSON.stringify(LoginDetails));
+        let Details = JSON.parse(localStorage.getItem("UserData"));
+        console.log(Details);
+
+
+
+}
+
     </script>
+    
+
+    
 </body>
 </html>
