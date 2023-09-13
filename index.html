@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <form onsubmit="formInput(event)" name="signupForm">
+        <input type="text" id="firstname" name="firstname" placeholder="firstname"><br>
+        <input type="text" id="lastname" name="lastname" placeholder="lastname"><br>
+        <input type="email" id="emailAddress" name="emailAddress" placeholder="emailAddress"><br>
+        <input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
+        <input type="submit">
+    </form>
+
+    <script>
+
+function formInput(e){
+    e.preventDefault()
+
+
+const signupForm= document.forms['signupForm']
+
+let data = new FormData(signupForm)
+
+const firstName = data.get('firstname')
+const lastName = data.get('firstname')
+const email = data.get('emailAddress')
+const password = data.get('userPassword')
+
+
+const signUpDetails = {
+         firstName,
+         lastName,
+          email,
+          password,
+
+        };
+
+        localStorage.setItem("UserData", JSON.stringify(signUpDetails));
+        let Details = JSON.parse(localStorage.getItem("UserData"));
+        console.log(Details);
+
+
+
+}
+
+    </script>
+</body>
+</html>
